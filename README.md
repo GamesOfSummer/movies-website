@@ -1,3 +1,22 @@
+# Highlight something in your project that you thought was especially interesting or significant to your overall implementation.
+
+# Tell us what you are most pleased or proud of with your implementation.
+
+Really love how the scffold project is setup - React, Typescript, prettier, eslint... all the things I install while on my clients!
+
+# Given more time, what next feature or improvement would you like to add to your project?
+
+I also updated the package.json - Next and Storybook are both a major version behind in the template. I use NCU to manage this. When I saw that eslint conflicted with eslint-config-next, I opetd to keep the existing version of eslint. This is something I'd look into at a later date. In this Javascript ecosystem, I keep my finger on the pulse of the package.json. An old one can lead to issues, or usually, project crippling tech debt.
+
+Minimum Requirements
+As a user,
+● I can search for movies and see a paginated list of results
+● I can filter search results by genre
+● I can navigate through the next and previous pages of the paginated results
+● I see the total count of search results
+● I see notable information for each search result, such as the summary, poster,
+duration, rating, etc.
+
 # next-react-query-tailwind starter kit
 
 This starter kit features **Next.js**, **React Query**, and **Tailwind CSS**.
