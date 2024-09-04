@@ -1,3 +1,9 @@
+- notes -
+
+get graphql working asap
+
+get redux installed
+
 # Highlight something in your project that you thought was especially interesting or significant to your overall implementation.
 
 # Tell us what you are most pleased or proud of with your implementation.
