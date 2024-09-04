@@ -38,6 +38,7 @@
     "@reduxjs/toolkit": "^2.2.7",
     "@tanstack/react-query": "5.54.1",
     "@types/react-redux": "^7.1.33",
+    "axios": "^1.7.7",
     "clsx": "2.1.1",
     "next": "14.2.7",
     "react": "18.3.1",

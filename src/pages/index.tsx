@@ -1,9 +1,44 @@
+import axios from 'axios';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Fragment } from 'react';
 import { NavigationLink } from 'src/components';
+import { useGetMoviesByNameQuery } from 'src/redux/moviesAPI';
+
+export async function getToken(): Promise {
+  let token = '';
+
+  try {
+    const response = await axios.get(
+      'https://0kadddxyh3.execute-api.us-east-1.amazonaws.com/auth/token'
+    );
+
+    const token = response.data.token;
+
+    //const headers = ;
+
+    console.log(token);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    const response2 = await axios.get(
+      'https://0kadddxyh3.execute-api.us-east-1.amazonaws.com/movies'
+    );
+
+    console.log(response2);
+  } catch (e: Error | AxiosError) {
+    if (axios.isAxiosError(e)) {
+      console.log('AxiosError ------------------');
+      console.log(e);
+    } else {
+      console.log('Error ------------------');
+      console.log(e);
+    }
+  }
+}
 
 const Home: NextPage = () => {
+  getToken();
+
   return (
     <Fragment>
       <Head>

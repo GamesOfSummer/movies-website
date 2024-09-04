@@ -1,8 +1,8 @@
 - notes -
 
-get graphql working asap
+get API working asap
 
-get redux installed
+- load state, whimsical~
 
 # Highlight something in your project that you thought was especially interesting or significant to your overall implementation.
 
@@ -11,6 +11,8 @@ get redux installed
 Really love how the scffold project is setup - React, Typescript, prettier, eslint... all the things I install while on my clients!
 
 # Given more time, what next feature or improvement would you like to add to your project?
+
+I wanted to use GraphQL! "Schema Introspection Failure. Introspection is disabled on this endpoint. Enable introspection to populate your schema."
 
 I also updated the package.json - Next and Storybook are both a major version behind in the template. I use NCU to manage this. When I saw that eslint conflicted with eslint-config-next, I opetd to keep the existing version of eslint. This is something I'd look into at a later date. In this Javascript ecosystem, I keep my finger on the pulse of the package.json. An old one can lead to issues, or usually, project crippling tech debt.
 
