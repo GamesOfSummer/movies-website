@@ -1,17 +1,21 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { Movie } from './Types';
-import axios from 'axios';
+import type { Movie, MoviesSearched } from './Types';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: Movie[] = [];
+const initialState: MoviesSearched = {
+  movies: [],
+  id: 'test',
+};
 
 export const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
-    setArray: (state, action: PayloadAction) => {
-      state = state.push(action.payload.name);
+    setArray: (state, action: any) => {
+      console.log(action);
+      console.log(state.movies);
+
+      state.movies = action.payload;
     },
   },
 });

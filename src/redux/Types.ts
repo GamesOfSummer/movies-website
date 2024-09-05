@@ -4,6 +4,13 @@ export interface User {
   email: string;
 }
 
+export interface MoviesSearched {
+  movies: Movie[];
+  id: 'test';
+}
+
 export interface Movie {
   id: string;
 }
+
+

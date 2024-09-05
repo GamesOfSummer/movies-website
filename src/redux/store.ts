@@ -1,10 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import userSlice from './userSlice';
-import { moviesSlice } from './moviesSlice';
+import userReducer from './userSlice';
+import moviesReducer from './moviesSlice';
+
+const rootReducer = combineReducers({
+  user: userReducer,
+  movies: moviesReducer,
+});
 
 export const store = configureStore({
-  reducer: { userInfo: userSlice, movies: moviesSlice },
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

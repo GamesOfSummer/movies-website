@@ -18,16 +18,15 @@ const Home: NextPage = () => {
 
       const token = response.data.token;
 
-      console.log(token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
       const response2 = await axios.get(
         'https://0kadddxyh3.execute-api.us-east-1.amazonaws.com/movies'
       );
 
-      console.log(response2);
+      //console.log(response2.data.data);
 
-      dispatch(setArray(response2));
+      dispatch(setArray(response2.data.data));
     } catch (e: Error | AxiosError) {
       if (axios.isAxiosError(e)) {
         console.log('AxiosError ------------------');
