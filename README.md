@@ -27,6 +27,8 @@ I wanted to use GraphQL! "Schema Introspection Failure. Introspection is disable
 
 I also updated the package.json - Next and Storybook are both a major version behind in the template. I use NCU to manage this. When I saw that eslint conflicted with eslint-config-next, I opetd to keep the existing version of eslint. This is something I'd look into at a later date. In this Javascript ecosystem, I keep my finger on the pulse of the package.json. An old one can lead to issues, or usually, project crippling tech debt.
 
+- A note - I know how to git rebase and have clean, simple commits that go into a pull request. When I build on a repo that's just for me, it can get messy at times and I just commit to main because I'm lazy. :)
+
 # next-react-query-tailwind starter kit
 
 This starter kit features **Next.js**, **React Query**, and **Tailwind CSS**.
