@@ -72,12 +72,21 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="w-3/5 my-5 mx-auto text-center">
-        <h1 className="bg-blue-600 text-white text-2xl font-semibold p-4 rounded">
+        <h1 className="bg-purple-400 text-white text-2xl font-semibold p-4 rounded">
           Movies R Us
         </h1>
 
-        <input type="text" placeholder="Search.." onChange={handleChange} />
-        <button type="button" onClick={() => Search()}>
+        <input
+          type="text"
+          placeholder="Search.."
+          onChange={handleChange}
+          className="border-2"
+        />
+        <button
+          type="button"
+          className="bg-purple-400 text-white text-xl font-semibold p-2 rounded"
+          onClick={() => Search()}
+        >
           Search!
         </button>
       </header>
