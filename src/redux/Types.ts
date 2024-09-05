@@ -13,4 +13,6 @@ export interface Movie {
   id: string;
 }
 
-
+export interface Loading {
+  loading: boolean;
+}
