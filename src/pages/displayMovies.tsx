@@ -8,11 +8,6 @@ import { Movie } from 'src/redux/Types';
 const DisplayMovies = () => {
   const { movies } = useSelector((state: RootState) => state.movies);
 
-  console.log('displayMovies');
-  console.log(movies);
-  console.log(movies);
-  console.log('END displayMovies');
-
   return (
     <div>
       <h1>Names List</h1>

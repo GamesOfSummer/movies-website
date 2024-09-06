@@ -7,10 +7,16 @@ import { setArray } from 'src/redux/moviesSlice';
 import { SetAxiosHeaders } from './authenticate';
 import { BASEURL } from 'src/redux/Constants';
 import DisplayMovies from './displayMovies';
+import { GetMovieGenres } from './getGenres';
 
 const Home: NextPage = () => {
   useEffect(() => {
-    SetAxiosHeaders();
+    const Setup = async (): Promise<void> => {
+      await SetAxiosHeaders();
+      await GetMovieGenres();
+    };
+
+    Setup();
   }, []);
 
   const dispatch = useAppDispatch();
