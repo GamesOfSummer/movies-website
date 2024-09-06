@@ -7,23 +7,26 @@ import { Movie } from 'src/redux/Types';
 
 const DisplayMovies = () => {
   const { movies } = useSelector((state: RootState) => state.movies);
+  const filter = useSelector((state: RootState) => state.filters);
 
   return (
     <div>
-      <h1>Names List</h1>
-      <h1>{movies.length}</h1>
-      <ul>
-        {movies.map((movie: Movie, index) => (
-          <div key={movie.id} className="border-2 p-2 rounded">
-            <li>{movie.id}</li>
-            <li>{movie.title}</li>
+      <h1>`Movies Found :: ${movies.length}`</h1>
 
-            {movie.genres.map((genre: string, index) => (
-              <li key={index}>{genre.title}</li>
-            ))}
-          </div>
-        ))}
-      </ul>
+      {movies.map((movie: Movie, index) => (
+        <div key={movie.id} className="border-2 p-2 rounded">
+          {movie.genres.map((genre: string) =>
+            filter.includes(genre) ? <li key={index}>MATCH</li> : null
+          )}
+
+          <li>{movie.id}</li>
+          <li>{movie.title}</li>
+
+          {movie.genres.map((genre: string, index) => (
+            <li key={index}>{genre.title}</li>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };
