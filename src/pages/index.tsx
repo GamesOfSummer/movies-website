@@ -10,6 +10,7 @@ import { BASEURL } from 'src/redux/Constants';
 import DisplayMovies from './displayMovies';
 import { GetMovieGenres } from './getGenres';
 import DisplayGenres from './displayGenres';
+import { useSelector } from 'react-redux';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -30,16 +31,38 @@ const Home: NextPage = () => {
     setSearchState(value);
   };
 
+  const moviesByGenre = useSelector((state: RootState) => state.genres);
+
   async function Search(): Promise {
     try {
-      axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-      const response2 = await axios.get(
+      const { data } = await axios.get(
         BASEURL + '/movies?search=' + searchState
       );
 
-      console.log(response2.data.data);
+      console.log('Search');
+      console.log(data.data);
+      console.log(data.data.length);
 
-      dispatch(setArray(response2.data.data));
+      const newArray = [];
+      data.data.map(async (movie: any) => {
+        const data = await axios.get(BASEURL + '/movies/' + movie.id);
+
+        console.log('Individual Movie - ' + data);
+        console.log(data);
+
+        // moviesByGenre.movies.map((genres: any) => {
+        //   //console.log('Individual moviesByGenre');
+        //   console.log(genres);
+
+        //   if (genres.movies.includes(movie.id)) {
+        //     console.log('MATCH');
+        //   }
+        // });
+
+        //console.log(data);
+      });
+
+      dispatch(setArray(data.data));
     } catch (e: Error | AxiosError) {
       if (axios.isAxiosError(e)) {
         console.log('AxiosError ------------------');

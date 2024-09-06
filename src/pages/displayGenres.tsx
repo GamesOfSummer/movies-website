@@ -9,19 +9,17 @@ const DisplayGenres = () => {
   const { movies } = useSelector((state: RootState) => state.genres);
 
   return (
-    <div>
-      <ul>
-        {movies.map((movie: MovieGenre, index) => (
-          <div key={index}>
-            <div
-              key={index}
-              className="w-50 bg-purple-400 text-white text-s font-semibold p-1 rounded"
-            >
-              {movie.title}
-            </div>
+    <div className="grid grid-cols-5 gap-1">
+      {movies.map((movie: MovieGenre, index) => (
+        <div key={index}>
+          <div
+            key={index}
+            className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
+          >
+            {movie.title}
           </div>
-        ))}
-      </ul>
+        </div>
+      ))}
     </div>
   );
 };
