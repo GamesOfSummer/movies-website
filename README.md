@@ -1,5 +1,9 @@
 # TODO -
 
+[ ] pagination - (in redux store...?)
+[ ] card, make it pretty
+[ ] filter by genre
+
 Minimum Requirements
 As a user,
 ● I can search for movies and see a paginated list of results
