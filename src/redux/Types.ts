@@ -6,13 +6,18 @@ export interface User {
 
 export interface MoviesSearched {
   movies: Movie[];
-  id: 'test';
 }
 
 export interface Movie {
   id: string;
   title: string;
   posterUrl: string;
+}
+
+export interface MovieGenres {
+  id: string;
+  title: string;
+  movies: number[];
 }
 
 export interface Loading {

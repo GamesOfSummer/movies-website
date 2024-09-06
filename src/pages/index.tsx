@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Fragment, useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { setArray } from 'src/redux/moviesSlice';
+import { setGenresArray } from 'src/redux/movieGenresSlice';
 import { SetAxiosHeaders } from './authenticate';
 import { BASEURL } from 'src/redux/Constants';
 import DisplayMovies from './displayMovies';
@@ -13,7 +14,8 @@ const Home: NextPage = () => {
   useEffect(() => {
     const Setup = async (): Promise<void> => {
       await SetAxiosHeaders();
-      await GetMovieGenres();
+      const genreArray = await GetMovieGenres();
+      dispatch(setGenresArray(genreArray));
     };
 
     Setup();
