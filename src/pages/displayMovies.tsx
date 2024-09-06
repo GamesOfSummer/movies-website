@@ -14,9 +14,13 @@ const DisplayMovies = () => {
       <h1>{movies.length}</h1>
       <ul>
         {movies.map((movie: Movie, index) => (
-          <div key={index}>
-            <li key={index}>{movie.id}</li>
-            <li key={index}>{movie.title}</li>
+          <div key={movie.id} className="border-2 p-2 rounded">
+            <li>{movie.id}</li>
+            <li>{movie.title}</li>
+
+            {movie.genres.map((genre: string, index) => (
+              <li key={index}>{genre.title}</li>
+            ))}
           </div>
         ))}
       </ul>
