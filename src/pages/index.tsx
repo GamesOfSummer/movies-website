@@ -11,6 +11,8 @@ import DisplayMovies from './displayMovies';
 import { GetMovieGenres } from './getGenres';
 import DisplayGenres from './displayGenres';
 import { useSelector } from 'react-redux';
+import { Movie, MoviesSearched } from 'src/redux/Types';
+import { title } from 'process';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -24,45 +26,37 @@ const Home: NextPage = () => {
   }, []);
 
   const dispatch = useAppDispatch();
-  const [searchState, setSearchState] = useState('');
+  const [searchState, setSearchState] = useState('all');
 
   const handleChange = (event) => {
     const value = event.target.value;
     setSearchState(value);
   };
 
-  const moviesByGenre = useSelector((state: RootState) => state.genres);
-
-  async function Search(): Promise {
+  async function Search(): Promise<void> {
     try {
       const { data } = await axios.get(
         BASEURL + '/movies?search=' + searchState
       );
 
-      console.log('Search');
-      console.log(data.data);
-      console.log(data.data.length);
+      //console.log(data.data);
 
-      const newArray = [];
-      data.data.map(async (movie: any) => {
-        const data = await axios.get(BASEURL + '/movies/' + movie.id);
+      let output = await Promise.all(
+        data.data.map(async (movie: any) => {
+          const data = await axios.get(BASEURL + '/movies/' + movie.id);
 
-        console.log('Individual Movie - ' + data);
-        console.log(data);
+          const updatedMovie: Movie = {
+            id: data.data.id,
+            title: data.data.title,
+            genres: data.data.genres,
+            posterUrl: data.data.posterUrl,
+          };
 
-        // moviesByGenre.movies.map((genres: any) => {
-        //   //console.log('Individual moviesByGenre');
-        //   console.log(genres);
+          return updatedMovie;
+        })
+      );
 
-        //   if (genres.movies.includes(movie.id)) {
-        //     console.log('MATCH');
-        //   }
-        // });
-
-        //console.log(data);
-      });
-
-      dispatch(setArray(data.data));
+      dispatch(setArray(output));
     } catch (e: Error | AxiosError) {
       if (axios.isAxiosError(e)) {
         console.log('AxiosError ------------------');

@@ -4,7 +4,6 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: MoviesSearched = {
   movies: [],
-  id: 'test',
 };
 
 export const moviesSlice = createSlice({
