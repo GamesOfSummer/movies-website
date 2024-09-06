@@ -8,6 +8,10 @@ export interface MoviesSearched {
   movies: Movie[];
 }
 
+export interface Filters {
+  filters: string[];
+}
+
 export interface Movie {
   id: string;
   title: string;

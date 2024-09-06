@@ -11,9 +11,6 @@ export const moviesGenresSlice = createSlice({
   initialState,
   reducers: {
     setGenresArray: (state, action: any) => {
-      console.log(action);
-      console.log(state.movies);
-
       state.movies = action.payload;
     },
   },
