@@ -21,9 +21,9 @@ Really love how the scffold project is setup - React, Typescript, prettier, esli
 
 # Given more time, what next feature or improvement would you like to add to your project?
 
-I'm really cross with Redux Toolkit Query! On paper it's supposed to handle API calls and load them directly into state, but it kept fighting me and the documentation isn't that great. I had this same issue with my Cat App - it can work for a simple thing, but the instant you pull it out of the sandbox and take it for a spin, it explodes on the side of the road... sigh....
+I'm really cross with RTK Query! On paper it's supposed to handle API calls and load them directly into state, but it kept fighting me and the documentation isn't that great. I had this same issue with my Cat App - it can work for a simple thing, but the instant you pull it out of the sandbox and take it for a spin, it explodes on the side of the road... sigh....
 
-I wanted to use GraphQL! "Schema Introspection Failure. Introspection is disabled on this endpoint. Enable introspection to populate your schema."
+Also, I wanted to use GraphQL! "Schema Introspection Failure. Introspection is disabled on this endpoint. Enable introspection to populate your schema."
 
 I also updated the package.json - Next and Storybook are both a major version behind in the template. I use NCU to manage this. When I saw that eslint conflicted with eslint-config-next, I opetd to keep the existing version of eslint. This is something I'd look into at a later date. In this Javascript ecosystem, I keep my finger on the pulse of the package.json. An old one can lead to issues, or usually, project crippling tech debt.
 

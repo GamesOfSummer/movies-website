@@ -1,10 +1,11 @@
 import axios, { AxiosError } from 'axios';
+import { BASEURL } from 'src/redux/Constants';
 
 export const SetAxiosHeaders = async (): Promise<void> => {
   try {
-    const response = await axios.get(
-      'https://0kadddxyh3.execute-api.us-east-1.amazonaws.com/auth/token'
-    );
+    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+    const response = await axios.get(BASEURL + '/auth/token');
 
     const { token } = response.data;
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;

@@ -11,6 +11,8 @@ export interface MoviesSearched {
 
 export interface Movie {
   id: string;
+  title: string;
+  posterUrl: string;
 }
 
 export interface Loading {

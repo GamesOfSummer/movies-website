@@ -6,6 +6,7 @@ import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { setArray } from 'src/redux/moviesSlice';
 import { SetAxiosHeaders } from './authenticate';
 import { BASEURL } from 'src/redux/Constants';
+import DisplayMovies from './displayMovies';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -22,11 +23,14 @@ const Home: NextPage = () => {
 
   async function Search(): Promise {
     try {
-      const response2 = await axios.get(BASEURL + '?search=' + searchState);
+      axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+      const response2 = await axios.get(
+        BASEURL + '/movies?search=' + searchState
+      );
 
       console.log(response2.data.data);
 
-      // dispatch(setArray(response2.data.data));
+      dispatch(setArray(response2.data.data));
     } catch (e: Error | AxiosError) {
       if (axios.isAxiosError(e)) {
         console.log('AxiosError ------------------');
@@ -63,6 +67,8 @@ const Home: NextPage = () => {
         >
           Search!
         </button>
+
+        {DisplayMovies()}
       </header>
     </Fragment>
   );
