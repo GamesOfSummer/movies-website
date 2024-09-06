@@ -1,9 +1,9 @@
-import type { Movie, MoviesSearched } from './Types';
+import type { Movie, MovieGenreState, MoviesSearched } from './Types';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: any = {
-  movieGenres: [],
+const initialState: MovieGenreState = {
+  movies: [],
 };
 
 export const moviesGenresSlice = createSlice({

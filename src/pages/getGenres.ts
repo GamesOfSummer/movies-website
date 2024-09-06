@@ -4,9 +4,10 @@ import { BASEURL } from 'src/redux/Constants';
 export const GetMovieGenres = async (): Promise<void> => {
   try {
     const response = await axios.get(BASEURL + '/genres/movies');
-    const { data } = response;
+    const { data } = response.data;
 
-    console.log(response.data);
+    console.log('----');
+    console.log(data);
     return data;
   } catch (e: Error | AxiosError) {
     if (axios.isAxiosError(e)) {

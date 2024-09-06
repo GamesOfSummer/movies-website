@@ -9,6 +9,7 @@ import { SetAxiosHeaders } from './authenticate';
 import { BASEURL } from 'src/redux/Constants';
 import DisplayMovies from './displayMovies';
 import { GetMovieGenres } from './getGenres';
+import DisplayGenres from './displayGenres';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -76,6 +77,7 @@ const Home: NextPage = () => {
           Search!
         </button>
 
+        {DisplayGenres()}
         {DisplayMovies()}
       </header>
     </Fragment>

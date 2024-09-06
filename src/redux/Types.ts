@@ -14,7 +14,11 @@ export interface Movie {
   posterUrl: string;
 }
 
-export interface MovieGenres {
+export interface MovieGenreState {
+  movies: MovieGenre[];
+}
+
+export interface MovieGenre {
   id: string;
   title: string;
   movies: number[];
