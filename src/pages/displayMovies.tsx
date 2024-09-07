@@ -1,23 +1,9 @@
 import React, { useState } from 'react';
 
 import { useSelector } from 'react-redux';
-import moviesSlice from 'src/redux/moviesSlice';
 import { RootState } from 'src/redux/store';
 import { Filters, Movie } from 'src/redux/Types';
-
-const MovieCard = ({ movie }: Movie) => {
-  return (
-    <div key={movie.id} className="border-2 p-2 rounded">
-      {movie.title}
-
-      <img src={movie.posterUrl} alt="Description of image" />
-
-      {movie.genres.map((genre: string, index) => (
-        <li key={index}>{genre.title}</li>
-      ))}
-    </div>
-  );
-};
+import { MovieCard, MovieCardNotAMatch } from './displayMovieCard';
 
 const MatchOnGenre = (movie: Movie, filters: string[]): boolean => {
   if (filters.length === 0) {
@@ -27,21 +13,12 @@ const MatchOnGenre = (movie: Movie, filters: string[]): boolean => {
   return movie.genres.some((genre) => filters.includes(genre.title));
 };
 
-const MovieCardNotAMatch = ({ movie }: Movie) => {
-  return (
-    <div key={movie.id} className="border-2 p-2 rounded">
-      {movie.title} - Not a match!
-    </div>
-  );
-};
-
 const DisplayMovies = () => {
   const { movies } = useSelector((state: RootState) => state.movies);
   const { filters } = useSelector((state: RootState) => state.filtersState);
 
   const itemsPerPage = 15;
   const totalItems = movies.length;
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
   const [pageNumber, setPageNumber] = useState(0);
   let endNumber = pageNumber + itemsPerPage;
 
@@ -73,13 +50,15 @@ const DisplayMovies = () => {
         PageDown
       </button>
 
-      {cutMoviesArray.map((movie: Movie) =>
-        MatchOnGenre(movie, filters) ? (
-          <MovieCard movie={movie} />
-        ) : (
-          <MovieCardNotAMatch movie={movie} />
-        )
-      )}
+      <div className="grid grid-cols-5 gap-1">
+        {cutMoviesArray.map((movie: Movie) =>
+          MatchOnGenre(movie, filters) ? (
+            <MovieCard key={movie.id} movie={movie} />
+          ) : (
+            <MovieCardNotAMatch key={movie.id} movie={movie} />
+          )
+        )}
+      </div>
     </div>
   );
 };
