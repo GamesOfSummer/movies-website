@@ -6,9 +6,6 @@ import { RootState } from 'src/redux/store';
 import { Movie, MovieGenre } from 'src/redux/Types';
 
 const DisplayGenresButton = ({ genre }: string) => {
-  console.log('---!!!');
-  console.log(genre);
-
   const [buttonOn, setButtonOn] = useState(true);
 
   const handleClick = () => {
@@ -19,15 +16,15 @@ const DisplayGenresButton = ({ genre }: string) => {
     <div>
       {buttonOn ? (
         <button
-          onClick={() => handleClick('Hello from button!')}
+          onClick={() => handleClick()}
           className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
         >
           {genre}
         </button>
       ) : (
         <button
-          onClick={() => handleClick('Hello from button!')}
-          className="w-50 text-white text-s font-semibold p-1 rounded"
+          onClick={() => handleClick()}
+          className="w-50 bg-gray-300 text-white text-s font-semibold p-1 rounded"
         >
           {genre}
         </button>
