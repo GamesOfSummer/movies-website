@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import moviesSlice from 'src/redux/moviesSlice';
@@ -39,11 +39,41 @@ const DisplayMovies = () => {
   const { movies } = useSelector((state: RootState) => state.movies);
   const { filters } = useSelector((state: RootState) => state.filtersState);
 
+  const itemsPerPage = 15;
+  const totalItems = movies.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const [pageNumber, setPageNumber] = useState(0);
+  let endNumber = pageNumber + itemsPerPage;
+
+  const cutMoviesArray = movies.slice(pageNumber, endNumber);
+
+  const handleClickIncrement = () => {
+    setPageNumber(pageNumber + itemsPerPage);
+  };
+
+  const handleClickDecrement = () => {
+    setPageNumber(pageNumber - itemsPerPage);
+  };
+
   return (
     <div>
       <h1>{`Movies Found :: ${movies.length}`}</h1>
 
-      {movies.map((movie: Movie) =>
+      <button
+        onClick={() => handleClickIncrement()}
+        className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
+      >
+        PageUp
+      </button>
+
+      <button
+        onClick={() => handleClickDecrement()}
+        className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
+      >
+        PageDown
+      </button>
+
+      {cutMoviesArray.map((movie: Movie) =>
         MatchOnGenre(movie, filters) ? (
           <MovieCard movie={movie} />
         ) : (
