@@ -11,7 +11,7 @@ const DisplayMovies = () => {
 
   return (
     <div>
-      <h1>`Movies Found :: ${movies.length}`</h1>
+      <h1>{`Movies Found :: ${movies.length}`}</h1>
 
       {movies.map((movie: Movie, index) => (
         <div key={movie.id} className="border-2 p-2 rounded">

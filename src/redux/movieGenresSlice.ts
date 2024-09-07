@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: MovieGenreState = {
-  movies: [],
+  movieGenres: [],
 };
 
 export const moviesGenresSlice = createSlice({
@@ -11,7 +11,7 @@ export const moviesGenresSlice = createSlice({
   initialState,
   reducers: {
     setGenresArray: (state, action: any) => {
-      state.movies = action.payload;
+      state.movieGenres = action.payload;
     },
   },
 });

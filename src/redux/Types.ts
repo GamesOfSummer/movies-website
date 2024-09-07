@@ -20,7 +20,7 @@ export interface Movie {
 }
 
 export interface MovieGenreState {
-  movies: MovieGenre[];
+  movieGenres: MovieGenre[];
 }
 
 export interface MovieGenre {
