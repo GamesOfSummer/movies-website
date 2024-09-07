@@ -10,6 +10,8 @@ const MovieCard = ({ movie }: Movie) => {
     <div key={movie.id} className="border-2 p-2 rounded">
       {movie.title}
 
+      <img src={movie.posterUrl} alt="Description of image" />
+
       {movie.genres.map((genre: string, index) => (
         <li key={index}>{genre.title}</li>
       ))}
@@ -25,6 +27,14 @@ const MatchOnGenre = (movie: Movie, filters: string[]): boolean => {
   return movie.genres.some((genre) => filters.includes(genre.title));
 };
 
+const MovieCardNotAMatch = ({ movie }: Movie) => {
+  return (
+    <div key={movie.id} className="border-2 p-2 rounded">
+      {movie.title} - Not a match!
+    </div>
+  );
+};
+
 const DisplayMovies = () => {
   const { movies } = useSelector((state: RootState) => state.movies);
   const { filters } = useSelector((state: RootState) => state.filtersState);
@@ -34,7 +44,11 @@ const DisplayMovies = () => {
       <h1>{`Movies Found :: ${movies.length}`}</h1>
 
       {movies.map((movie: Movie) =>
-        MatchOnGenre(movie, filters) ? <MovieCard movie={movie} /> : null
+        MatchOnGenre(movie, filters) ? (
+          <MovieCard movie={movie} />
+        ) : (
+          <MovieCardNotAMatch movie={movie} />
+        )
       )}
     </div>
   );
