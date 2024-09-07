@@ -2,17 +2,16 @@ import axios from 'axios';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Fragment, useEffect, useState } from 'react';
-import { useAppSelector, useAppDispatch } from '../redux/hooks';
-import { setArray } from 'src/redux/moviesSlice';
+import { useAppDispatch } from '../redux/hooks';
+import { setMoviesArray } from 'src/redux/moviesSlice';
 import { setGenresArray } from 'src/redux/movieGenresSlice';
 import { SetAxiosHeaders } from './authenticate';
 import { BASEURL } from 'src/redux/Constants';
-import DisplayMovies from './displayMovies';
+
 import { GetMovieGenres } from './getGenres';
+import { Movie } from 'src/redux/Types';
+import DisplayMovies from './displayMovies';
 import DisplayGenres from './displayGenres';
-import { useSelector } from 'react-redux';
-import { Movie, MoviesSearched } from 'src/redux/Types';
-import { title } from 'process';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -39,8 +38,6 @@ const Home: NextPage = () => {
         BASEURL + '/movies?search=' + searchState
       );
 
-      //console.log(data.data);
-
       let output = await Promise.all(
         data.data.map(async (movie: any) => {
           const data = await axios.get(BASEURL + '/movies/' + movie.id);
@@ -56,7 +53,7 @@ const Home: NextPage = () => {
         })
       );
 
-      dispatch(setArray(output));
+      dispatch(setMoviesArray(output));
     } catch (e: Error | AxiosError) {
       if (axios.isAxiosError(e)) {
         console.log('AxiosError ------------------');

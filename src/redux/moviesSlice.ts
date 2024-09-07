@@ -10,12 +10,12 @@ export const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
-    setArray: (state, action: any) => {
+    setMoviesArray: (state, action: any) => {
       state.movies = action.payload;
     },
   },
 });
 
-export const { setArray } = moviesSlice.actions;
+export const { setMoviesArray } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

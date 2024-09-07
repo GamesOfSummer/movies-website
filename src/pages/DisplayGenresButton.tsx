@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { addFilterGenre, removeFilterGenre } from 'src/redux/filterSlice';
 import { useAppDispatch } from 'src/redux/hooks';
 
-export const DisplayGenresButton = (genre2) => {
+const DisplayGenresButton = (genre2: any) => {
   const { genre } = genre2;
 
   const dispatch = useAppDispatch();
@@ -39,3 +39,5 @@ export const DisplayGenresButton = (genre2) => {
     </div>
   );
 };
+
+export default DisplayGenresButton;

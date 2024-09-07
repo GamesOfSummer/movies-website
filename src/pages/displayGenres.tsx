@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { DisplayGenresButton } from './DisplayGenresButton';
+import DisplayGenresButton from './DisplayGenresButton';
+import { RootState } from 'src/redux/store';
 
 export const DisplayGenres = () => {
   const { movieGenres } = useSelector((state: RootState) => state.genres);
@@ -13,7 +14,7 @@ export const DisplayGenres = () => {
   return (
     <div className="grid grid-cols-5 gap-1">
       {genresOnly.map((genre: string) => (
-        <DisplayGenresButton genre={genre} />
+        <DisplayGenresButton key={genre} genre={genre} />
       ))}
     </div>
   );
