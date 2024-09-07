@@ -42,11 +42,17 @@ const Home: NextPage = () => {
         data.data.map(async (movie: any) => {
           const data = await axios.get(BASEURL + '/movies/' + movie.id);
 
+          console.log('what else is there');
+          console.log(data);
+
           const updatedMovie: Movie = {
             id: data.data.id,
             title: data.data.title,
             genres: data.data.genres,
             posterUrl: data.data.posterUrl,
+            rating: data.data.rating,
+            duration: data.data.duration,
+            summary: data.data.summary,
           };
 
           return updatedMovie;
@@ -72,8 +78,8 @@ const Home: NextPage = () => {
         <meta name="description" content="Generated using starter.dev" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="w-3/5 my-5 mx-auto text-center">
-        <h1 className="bg-purple-400 text-white text-2xl font-semibold p-4 rounded">
+      <header className="w-4/5 mx-auto text-center">
+        <h1 className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-2xl font-semibold py-4 rounded">
           Movies R Us
         </h1>
 
@@ -81,11 +87,11 @@ const Home: NextPage = () => {
           type="text"
           placeholder="Search.."
           onChange={handleChange}
-          className="border-2"
+          className="border-2 mx-10 my-5"
         />
         <button
           type="button"
-          className="bg-purple-400 text-white text-xl font-semibold p-2 rounded"
+          className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xl font-semibold rounded px-10"
           onClick={() => Search()}
         >
           Search!

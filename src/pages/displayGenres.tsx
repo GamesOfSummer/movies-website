@@ -12,7 +12,7 @@ export const DisplayGenres = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-5 gap-1">
+    <div className="grid grid-cols-8 gap-1">
       {genresOnly.map((genre: string) => (
         <DisplayGenresButton key={genre} genre={genre} />
       ))}

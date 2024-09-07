@@ -22,6 +22,9 @@ export const MovieCard = ({ movie }: Movie) => {
           </div>
         ))}
       </div>
+      <div className="text-sm">{movie.rating} </div>
+      <div className="text-sm">{movie.duration} </div>
+      <div className="text-sm">{movie.summary} </div>
     </div>
   );
 };

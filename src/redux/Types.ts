@@ -17,6 +17,9 @@ export interface Movie {
   title: string;
   posterUrl: string;
   genres: string[];
+  rating: string;
+  duration: string;
+  summary: string;
 }
 
 export interface MovieGenreState {

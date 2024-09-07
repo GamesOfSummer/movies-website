@@ -50,7 +50,7 @@ const DisplayMovies = () => {
         PageDown
       </button>
 
-      <div className="grid grid-cols-5 gap-1">
+      <div className="grid grid-cols-3 gap-1">
         {cutMoviesArray.map((movie: Movie) =>
           MatchOnGenre(movie, filters) ? (
             <MovieCard key={movie.id} movie={movie} />

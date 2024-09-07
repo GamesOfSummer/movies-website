@@ -24,7 +24,7 @@ const DisplayGenresButton = (genre2: any) => {
       {buttonOn ? (
         <button
           onClick={() => handleClick()}
-          className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
+          className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 px-3 rounded"
         >
           {genre}
         </button>
