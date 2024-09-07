@@ -1,4 +1,4 @@
-import type { Filters, Movie, MovieGenreState, MoviesSearched } from './Types';
+import type { Filters } from './Types';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
@@ -7,15 +7,20 @@ const initialState: Filters = {
 };
 
 export const filterSlice = createSlice({
-  name: 'genre',
+  name: 'filter',
   initialState,
   reducers: {
-    setFiltersArray: (state, action: any) => {
-      state.filters = action.payload;
+    addFilterGenre: (state, action: any) => {
+      if (!state.filters.includes(action.payload)) {
+        state.filters.push(action.payload);
+      }
+    },
+    removeFilterGenre: (state, action: any) => {
+      state.filters = state.filters.filter((genre) => genre !== action.payload);
     },
   },
 });
 
-export const { setFiltersArray } = filterSlice.actions;
+export const { addFilterGenre, removeFilterGenre } = filterSlice.actions;
 
 export default filterSlice.reducer;

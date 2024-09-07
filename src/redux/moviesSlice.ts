@@ -1,4 +1,4 @@
-import type { Movie, MoviesSearched } from './Types';
+import type { MoviesSearched } from './Types';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
@@ -11,9 +11,6 @@ export const moviesSlice = createSlice({
   initialState,
   reducers: {
     setArray: (state, action: any) => {
-      console.log(action);
-      console.log(state.movies);
-
       state.movies = action.payload;
     },
   },
