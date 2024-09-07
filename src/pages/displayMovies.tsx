@@ -36,19 +36,25 @@ const DisplayMovies = () => {
     <div>
       <h1>{`Movies Found :: ${movies.length}`}</h1>
 
-      <button
-        onClick={() => handleClickIncrement()}
-        className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
-      >
-        PageUp
-      </button>
+      {movies.length > 0 ? (
+        <div>
+          <button
+            onClick={() => handleClickIncrement()}
+            className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
+          >
+            PageUp
+          </button>
 
-      <button
-        onClick={() => handleClickDecrement()}
-        className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
-      >
-        PageDown
-      </button>
+          <button
+            onClick={() => handleClickDecrement()}
+            className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
+          >
+            PageDown
+          </button>
+        </div>
+      ) : (
+        <div />
+      )}
 
       <div className="grid grid-cols-3 gap-1">
         {cutMoviesArray.map((movie: Movie) =>

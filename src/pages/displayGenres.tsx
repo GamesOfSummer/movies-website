@@ -5,6 +5,7 @@ import { RootState } from 'src/redux/store';
 
 export const DisplayGenres = () => {
   const { movieGenres } = useSelector((state: RootState) => state.genres);
+  const { movies } = useSelector((state: RootState) => state.movies);
 
   const genresOnly: string[] = movieGenres.reduce((acc, movieGenre) => {
     acc.push(movieGenre.title);
@@ -13,9 +14,10 @@ export const DisplayGenres = () => {
 
   return (
     <div className="grid grid-cols-8 gap-1">
-      {genresOnly.map((genre: string) => (
-        <DisplayGenresButton key={genre} genre={genre} />
-      ))}
+      {movies.length > 0 &&
+        genresOnly.map((genre: string) => (
+          <DisplayGenresButton key={genre} genre={genre} />
+        ))}
     </div>
   );
 };

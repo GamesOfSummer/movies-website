@@ -80,12 +80,12 @@ const Home: NextPage = () => {
       </Head>
       <header className="w-4/5 mx-auto text-center">
         <h1 className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-2xl font-semibold py-4 rounded">
-          Movies R Us
+          So, what are you watching tonight?
         </h1>
 
         <input
           type="text"
-          placeholder="Search.."
+          placeholder="Search"
           onChange={handleChange}
           className="border-2 mx-10 my-5"
         />
@@ -94,7 +94,7 @@ const Home: NextPage = () => {
           className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xl font-semibold rounded px-10"
           onClick={() => Search()}
         >
-          Search!
+          Only way to find out...
         </button>
 
         {DisplayGenres()}
