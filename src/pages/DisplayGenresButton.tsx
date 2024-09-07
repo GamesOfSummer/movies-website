@@ -20,7 +20,7 @@ const DisplayGenresButton = (genre2: any) => {
   };
 
   return (
-    <div>
+    <div className="animate__animated animate__fadeInLeft">
       {buttonOn ? (
         <button
           onClick={() => handleClick()}

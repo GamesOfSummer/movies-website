@@ -12,6 +12,7 @@ import { GetMovieGenres } from './getGenres';
 import { Movie } from 'src/redux/Types';
 import DisplayMovies from './displayMovies';
 import DisplayGenres from './displayGenres';
+import 'animate.css';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -80,22 +81,28 @@ const Home: NextPage = () => {
       </Head>
       <header className="w-4/5 mx-auto text-center">
         <h1 className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-2xl font-semibold py-4 rounded">
-          So, what are you watching tonight?
+          <div className="animate__animated animate__bounce">
+            {' '}
+            So, what are you watching tonight?
+          </div>
         </h1>
 
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={handleChange}
-          className="border-2 mx-10 my-5"
-        />
-        <button
-          type="button"
-          className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xl font-semibold rounded px-10"
-          onClick={() => Search()}
-        >
-          Only way to find out...
-        </button>
+        <div className="animate__animated animate__slower animate__fadeInLeft">
+          {' '}
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={handleChange}
+            className="border-2 mx-10 my-5"
+          />
+          <button
+            type="button"
+            className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xl font-semibold rounded px-10"
+            onClick={() => Search()}
+          >
+            Only way to find out...
+          </button>
+        </div>
 
         {DisplayGenres()}
         {DisplayMovies()}

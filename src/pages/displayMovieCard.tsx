@@ -7,6 +7,22 @@ import { Filters, Movie } from 'src/redux/Types';
 
 export const MovieCard = ({ movie }: Movie) => {
   return (
+    <div className="animate__animated animate__delay-1s animate__slow animate__fadeIn ">
+      <MovieCardDetails key={movie.id} movie={movie} />
+    </div>
+  );
+};
+
+export const MovieCardNotAMatch = ({ movie }: Movie) => {
+  return (
+    <div className="opacity-20">
+      <MovieCardDetails key={movie.id} movie={movie} />
+    </div>
+  );
+};
+
+export const MovieCardDetails = ({ movie }: Movie) => {
+  return (
     <div key={movie.id} className="border-2 p-0 rounded">
       <img src={movie.posterUrl} className=" w-40 h-auto" alt={movie.name} />
 
@@ -25,14 +41,6 @@ export const MovieCard = ({ movie }: Movie) => {
       <div className="text-sm">{movie.rating} </div>
       <div className="text-sm">{movie.duration} </div>
       <div className="text-sm">{movie.summary} </div>
-    </div>
-  );
-};
-
-export const MovieCardNotAMatch = ({ movie }: Movie) => {
-  return (
-    <div className="opacity-30">
-      <MovieCard key={movie.id} movie={movie} />
     </div>
   );
 };
