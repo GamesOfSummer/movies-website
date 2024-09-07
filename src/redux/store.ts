@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   movies: moviesReducer,
   genres: movieGenresReducer,
   loading: loadingReducer,
-  filters: filterReducer,
+  filtersState: filterReducer,
 });
 
 export const store = configureStore({

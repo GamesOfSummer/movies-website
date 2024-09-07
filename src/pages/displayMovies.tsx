@@ -7,7 +7,7 @@ import { Movie } from 'src/redux/Types';
 
 const DisplayMovies = () => {
   const { movies } = useSelector((state: RootState) => state.movies);
-  const filter = useSelector((state: RootState) => state.filters);
+  const { filters } = useSelector((state: RootState) => state.filtersState);
 
   return (
     <div>
@@ -16,7 +16,11 @@ const DisplayMovies = () => {
       {movies.map((movie: Movie, index) => (
         <div key={movie.id} className="border-2 p-2 rounded">
           {movie.genres.map((genre: string) =>
-            filter.includes(genre) ? <li key={index}>MATCH</li> : null
+            filters.includes(genre.title) ? (
+              <div key={index}>MATCH</div>
+            ) : (
+              <div key={index}>no match {genre.title}</div>
+            )
           )}
 
           <li>{movie.id}</li>
