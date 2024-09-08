@@ -7,7 +7,7 @@ import { Filters, Movie } from 'src/redux/Types';
 
 export const MovieCard = ({ movie }: Movie) => {
   return (
-    <div className="animate__animated animate__delay-1s animate__zoomInRight ">
+    <div className="animate__animated animate__slow animate__fadeIn ">
       <MovieCardDetails key={movie.id} movie={movie} />
     </div>
   );
