@@ -22,6 +22,8 @@ Every //@ts-ignore needs to be removed. But that's life. Classic case of "I know
 
 I'm really cross with RTK Query! On paper it's supposed to handle API calls and load them directly into state, but it kept fighting me and the documentation isn't that great. I had this same issue with my Cat iOS App - it can work for a simple thing, but the instant you pull it out of the sandbox and take it for a spin, it explodes on the side of the road... sigh....
 
+Loading state in Redux is not used. It's a big plus for using RTK Query, as that feature comes built in!
+
 I wanted to use GraphQL! The backend for that API kept listing errors along the lines of "Schema Introspection Failure." Next time!
 
 # Sources

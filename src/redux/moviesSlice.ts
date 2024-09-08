@@ -1,6 +1,5 @@
 import type { MoviesSearched } from './Types';
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: MoviesSearched = {
   movies: [],

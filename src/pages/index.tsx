@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   }, []);
 
   const dispatch = useAppDispatch();
-  const [searchState, setSearchState] = useState('all');
+  const [searchState, setSearchState] = useState('');
 
   const handleChange = (event: any) => {
     const value = event.target.value;
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
   }
 
   async function SurpriseMe(): Promise<void> {
-    const array = ['lion', 'aladdin', 'mermaid', 'beauty'];
+    const array = ['lion', 'aladdin', 'mermaid', 'beauty', 'Fantasia'];
 
     const random = Math.floor(Math.random() * array.length);
     setSearchState(array[random]);

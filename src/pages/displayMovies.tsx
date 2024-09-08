@@ -18,7 +18,6 @@ const DisplayMovies = () => {
   const { filters } = useSelector((state: RootState) => state.filtersState);
 
   const itemsPerPage = 6;
-  const totalItems = movies.length;
   const [pageNumber, setPageNumber] = useState(0);
   let endNumber = pageNumber + itemsPerPage;
 
@@ -36,21 +35,29 @@ const DisplayMovies = () => {
     <div>
       {movies.length > 0 ? (
         <div>
-          <h1>{`Movies Found :: ${movies.length}`}</h1>
+          <div className="text-xl">{`Movies Found :: ${movies.length}`}</div>
 
-          <button
-            onClick={() => handleClickDecrement()}
-            className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
-          >
-            Previous Page
-          </button>
+          {pageNumber > 0 ? (
+            <button
+              onClick={() => handleClickDecrement()}
+              className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
+            >
+              Previous Page
+            </button>
+          ) : (
+            <div />
+          )}
 
-          <button
-            onClick={() => handleClickIncrement()}
-            className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
-          >
-            Next Page
-          </button>
+          {movies.length > itemsPerPage ? (
+            <button
+              onClick={() => handleClickIncrement()}
+              className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
+            >
+              Next Page
+            </button>
+          ) : (
+            <div />
+          )}
         </div>
       ) : (
         <div />

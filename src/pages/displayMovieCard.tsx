@@ -34,13 +34,13 @@ export const MovieCardDetails = ({ movie }: MovieTemp) => {
             <div className="float-left p-1">
               <img
                 src={movie.posterUrl}
-                width="50"
-                height="80"
+                width="100"
+                height="200"
                 alt={movie.title}
               />
             </div>
           ) : (
-            <div style={{ height: 80, width: 50 }} />
+            <div style={{ height: 100, width: 200 }} />
           )}
 
           <div className="text-left">
