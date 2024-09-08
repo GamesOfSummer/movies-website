@@ -57,13 +57,14 @@ const DisplayMovies = () => {
       )}
 
       <div className="grid grid-cols-2 gap-2">
-        {cutMoviesArray.map((movie: Movie) =>
-          MatchOnGenre(movie, filters) ? (
-            <MovieCard key={movie.id} movie={movie} />
-          ) : (
-            <MovieCardNotAMatch key={movie.id} movie={movie} />
-          )
-        )}
+        {cutMoviesArray.length > 0 &&
+          cutMoviesArray.map((movie: Movie) =>
+            MatchOnGenre(movie, filters) ? (
+              <MovieCard key={movie.id} movie={movie} />
+            ) : (
+              <MovieCardNotAMatch key={movie.id} movie={movie} />
+            )
+          )}
       </div>
     </div>
   );
