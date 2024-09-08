@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { randomId } from 'src/helpers/randomId';
 import { truncateSummary } from 'src/helpers/truncateSummary';
 import { MovieTemp } from 'src/redux/Types';

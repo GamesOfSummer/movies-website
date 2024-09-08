@@ -42,16 +42,16 @@ const Home: NextPage = () => {
 
       let output = await Promise.all(
         data.data.map(async (movie: any) => {
-          const data = await axios.get(BASEURL + '/movies/' + movie.id);
+          const { data } = await axios.get(BASEURL + '/movies/' + movie.id);
 
           const updatedMovie: Movie = {
-            id: data.data.id,
-            title: data.data.title,
-            genres: data.data.genres,
-            posterUrl: data.data.posterUrl,
-            rating: data.data.rating,
-            duration: data.data.duration,
-            summary: data.data.summary,
+            id: data.id,
+            title: data.title,
+            genres: data.genres,
+            posterUrl: data.posterUrl,
+            rating: data.rating,
+            duration: data.duration,
+            summary: data.summary,
           };
 
           return updatedMovie;
