@@ -1,14 +1,15 @@
-import axios from 'axios';
+/* eslint-disable react-hooks/exhaustive-deps */
+import axios, { AxiosError } from 'axios';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Fragment, useEffect, useState } from 'react';
 import { useAppDispatch } from '../redux/hooks';
 import { setMoviesArray } from 'src/redux/moviesSlice';
 import { setGenresArray } from 'src/redux/movieGenresSlice';
-import { SetAxiosHeaders } from './authenticate';
+import SetAxiosHeaders from '../helpers/authenticate';
 import { BASEURL } from 'src/redux/Constants';
 
-import { GetMovieGenres } from './getGenres';
+import GetMovieGenres from '../helpers/getMovieGenres';
 import { Movie } from 'src/redux/Types';
 import DisplayMovies from './displayMovies';
 import DisplayGenres from './displayGenres';
@@ -28,7 +29,7 @@ const Home: NextPage = () => {
   const dispatch = useAppDispatch();
   const [searchState, setSearchState] = useState('all');
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     const value = event.target.value;
     setSearchState(value);
   };
@@ -57,8 +58,9 @@ const Home: NextPage = () => {
         })
       );
 
+      // @ts-ignore
       dispatch(setMoviesArray(output));
-    } catch (e: Error | AxiosError) {
+    } catch (e: AxiosError | any) {
       if (axios.isAxiosError(e)) {
         console.log('AxiosError ------------------');
         console.log(e);

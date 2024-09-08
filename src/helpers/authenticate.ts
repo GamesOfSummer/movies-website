@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import { BASEURL } from 'src/redux/Constants';
 
-export const SetAxiosHeaders = async (): Promise<void> => {
+const SetAxiosHeaders = async (): Promise<void> => {
   try {
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
@@ -9,7 +9,7 @@ export const SetAxiosHeaders = async (): Promise<void> => {
 
     const { token } = response.data;
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  } catch (e: Error | AxiosError) {
+  } catch (e: AxiosError | any) {
     if (axios.isAxiosError(e)) {
       console.log('AxiosError ------------------');
       console.log(e);
@@ -19,3 +19,5 @@ export const SetAxiosHeaders = async (): Promise<void> => {
     }
   }
 };
+
+export default SetAxiosHeaders;

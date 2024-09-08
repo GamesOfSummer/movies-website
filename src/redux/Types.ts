@@ -12,6 +12,14 @@ export interface Filters {
   filters: string[];
 }
 
+export interface MovieTemp {
+  movie: Movie;
+}
+
+export interface GenreTemp {
+  title: string;
+}
+
 export interface Movie {
   id: string;
   title: string;

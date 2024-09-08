@@ -13,6 +13,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setId: (state, action: PayloadAction) => {
+      //@ts-ignore
       state.id = action.payload.name;
     },
   },

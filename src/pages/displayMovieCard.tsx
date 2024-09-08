@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+/* eslint-disable @next/next/no-img-element */
+import React from 'react';
+import { MovieTemp } from 'src/redux/Types';
 
-import { useSelector } from 'react-redux';
-import moviesSlice from 'src/redux/moviesSlice';
-import { RootState } from 'src/redux/store';
-import { Filters, Movie } from 'src/redux/Types';
+const randomId = function () {
+  return Math.random().toString(36).substring(2, 8);
+};
 
-export const MovieCard = ({ movie }: Movie) => {
+const MovieCard = ({ movie }: MovieTemp) => {
   return (
     <div className="animate__animated animate__slow animate__fadeIn ">
-      <MovieCardDetails key={movie.id} movie={movie} />
+      <MovieCardDetails key={randomId()} movie={movie} />
     </div>
   );
 };
 
-export const MovieCardNotAMatch = ({ movie }: Movie) => {
+export default MovieCard;
+
+export const MovieCardNotAMatch = ({ movie }: MovieTemp) => {
   return (
     <div className="opacity-20">
-      <MovieCardDetails key={movie.id} movie={movie} />
+      <MovieCardDetails key={randomId()} movie={movie} />
     </div>
   );
 };
@@ -28,21 +31,20 @@ const truncateSummary = (summary: string) => {
   return summary;
 };
 
-export const MovieCardDetails = ({ movie }: Movie) => {
+export const MovieCardDetails = ({ movie }: MovieTemp) => {
   return (
     <div
-      key={movie.id}
+      key={movie.title}
       className="overflow-hidden border-2 border-cyan-500 pb-5 rounded h-40"
     >
       <div className="float-left p-1">
-        {' '}
-        <img src={movie.posterUrl} className="h-40" alt={movie.name} />
+        <img src={movie.posterUrl} className="h-40" alt={movie.title} />
       </div>
 
       <div className="text-left">
         <div className="text-sm">{movie.title} </div>
         <div className="grid grid-cols-2 gap-1">
-          {movie.genres.map((genre: string, index) => (
+          {movie.genres.map((genre: any, index) => (
             <div
               key={index}
               className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs p-1 rounded"
@@ -52,7 +54,7 @@ export const MovieCardDetails = ({ movie }: Movie) => {
           ))}
         </div>
         <div className="text-sm">
-          {movie.rating} // {movie.duration}
+          {movie.rating} || {movie.duration}
         </div>
 
         <div className="text-sm">{truncateSummary(movie.summary)} </div>

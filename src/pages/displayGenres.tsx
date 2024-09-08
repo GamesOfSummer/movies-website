@@ -8,6 +8,7 @@ export const DisplayGenres = () => {
   const { movies } = useSelector((state: RootState) => state.movies);
 
   const genresOnly: string[] = movieGenres.reduce((acc, movieGenre) => {
+    // @ts-ignore
     acc.push(movieGenre.title);
     return acc;
   }, []);

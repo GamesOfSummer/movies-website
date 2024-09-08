@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/redux/store';
-import { Filters, Movie } from 'src/redux/Types';
-import { MovieCard, MovieCardNotAMatch } from './displayMovieCard';
+import { Movie } from 'src/redux/Types';
+import MovieCard, { MovieCardNotAMatch } from './displayMovieCard';
 
 const MatchOnGenre = (movie: Movie, filters: string[]): boolean => {
   if (filters.length === 0) {
     return true;
   }
-
+  // @ts-ignore
   return movie.genres.some((genre) => filters.includes(genre.title));
 };
 
