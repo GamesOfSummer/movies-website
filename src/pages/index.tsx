@@ -81,13 +81,13 @@ const Home: NextPage = () => {
       </Head>
       <header className="w-4/5 mx-auto text-center">
         <h1 className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-2xl font-semibold py-4 rounded">
-          <div className="animate__animated animate__bounce">
+          <div className="animate__animated animate__bounce animate__repeat-2">
             {' '}
             So, what are you watching tonight?
           </div>
         </h1>
 
-        <div className="animate__animated animate__slower animate__fadeInLeft">
+        <div className="animate__animated animate__delay-2s animate__fadeIn">
           {' '}
           <input
             type="text"

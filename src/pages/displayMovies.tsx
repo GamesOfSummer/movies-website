@@ -17,7 +17,7 @@ const DisplayMovies = () => {
   const { movies } = useSelector((state: RootState) => state.movies);
   const { filters } = useSelector((state: RootState) => state.filtersState);
 
-  const itemsPerPage = 15;
+  const itemsPerPage = 6;
   const totalItems = movies.length;
   const [pageNumber, setPageNumber] = useState(0);
   let endNumber = pageNumber + itemsPerPage;
@@ -34,29 +34,29 @@ const DisplayMovies = () => {
 
   return (
     <div>
-      <h1>{`Movies Found :: ${movies.length}`}</h1>
-
       {movies.length > 0 ? (
         <div>
-          <button
-            onClick={() => handleClickIncrement()}
-            className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
-          >
-            PageUp
-          </button>
+          <h1>{`Movies Found :: ${movies.length}`}</h1>
 
           <button
             onClick={() => handleClickDecrement()}
             className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
           >
-            PageDown
+            Previous Page
+          </button>
+
+          <button
+            onClick={() => handleClickIncrement()}
+            className="w-50 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-s font-semibold p-1 rounded"
+          >
+            Next Page
           </button>
         </div>
       ) : (
         <div />
       )}
 
-      <div className="grid grid-cols-3 gap-1">
+      <div className="grid grid-cols-2 gap-2">
         {cutMoviesArray.map((movie: Movie) =>
           MatchOnGenre(movie, filters) ? (
             <MovieCard key={movie.id} movie={movie} />
