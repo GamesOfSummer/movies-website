@@ -43,9 +43,6 @@ const Home: NextPage = () => {
         data.data.map(async (movie: any) => {
           const data = await axios.get(BASEURL + '/movies/' + movie.id);
 
-          console.log('what else is there');
-          console.log(data);
-
           const updatedMovie: Movie = {
             id: data.data.id,
             title: data.data.title,
@@ -72,6 +69,14 @@ const Home: NextPage = () => {
     }
   }
 
+  async function SurpriseMe(): Promise<void> {
+    const array = ['lion', 'aladdin', 'mermaid', 'beauty'];
+
+    const random = Math.floor(Math.random() * array.length);
+    setSearchState(array[random]);
+    await Search();
+  }
+
   return (
     <Fragment>
       <Head>
@@ -82,16 +87,14 @@ const Home: NextPage = () => {
       <header className="w-4/5 mx-auto text-center">
         <h1 className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-2xl font-semibold py-4 rounded">
           <div className="animate__animated animate__bounce animate__repeat-2">
-            {' '}
             So, what are you watching tonight?
           </div>
         </h1>
 
         <div className="animate__animated animate__delay-2s animate__fadeIn">
-          {' '}
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Think of a movie title!"
             onChange={handleChange}
             className="border-2 mx-10 my-5"
           />
@@ -100,7 +103,14 @@ const Home: NextPage = () => {
             className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xl font-semibold rounded px-10"
             onClick={() => Search()}
           >
-            Only way to find out...
+            Search
+          </button>
+          <button
+            type="button"
+            className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-xl font-semibold rounded px-10 ml-5"
+            onClick={() => SurpriseMe()}
+          >
+            Surprise Me
           </button>
         </div>
 

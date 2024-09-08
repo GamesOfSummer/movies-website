@@ -22,7 +22,7 @@ export const MovieCardNotAMatch = ({ movie }: Movie) => {
 };
 
 const truncateSummary = (summary: string) => {
-  if (summary.length > 100) {
+  if (!!summary && summary.length > 100) {
     return summary.slice(0, 100) + '...';
   }
   return summary;
@@ -30,8 +30,11 @@ const truncateSummary = (summary: string) => {
 
 export const MovieCardDetails = ({ movie }: Movie) => {
   return (
-    <div key={movie.id} className="border-2 border-cyan-500 p-1 rounded h-40">
-      <div className="float-left">
+    <div
+      key={movie.id}
+      className="overflow-hidden border-2 border-cyan-500 pb-5 rounded h-40"
+    >
+      <div className="float-left p-1">
         {' '}
         <img src={movie.posterUrl} className="h-40" alt={movie.name} />
       </div>
